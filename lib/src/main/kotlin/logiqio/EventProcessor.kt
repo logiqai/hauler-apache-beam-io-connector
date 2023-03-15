@@ -13,10 +13,12 @@ class ProcessBatchedEvent(private val endpoint: String, private val ingestToken:
         val request = HttpRequest.newBuilder()
             .uri(URI.create(this.endpoint))
             .header("Content-Type", "application/json")
+            .header("Authorization", "Bearer $ingestToken")
             .POST(HttpRequest.BodyPublishers.ofString(element))
             .build()
 
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
+        println(response.body())
         receiver.output(LogiqError(response.statusCode(), response.body()))
     }
 }

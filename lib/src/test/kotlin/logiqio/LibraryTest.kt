@@ -2,7 +2,6 @@ package logiqio
 
 import org.apache.beam.sdk.Pipeline
 import org.apache.beam.sdk.transforms.Create
-import org.apache.beam.sdk.values.PDone
 import kotlin.test.Test
 
 class LibraryTest {
@@ -16,7 +15,7 @@ class LibraryTest {
 
         pipeline
             .apply("Create elements", Create.of(ele))
-            .apply(LogiqIO.Write(endpoint = "http://localhost:9999/v1/json_batch", ingestToken = "none"))
+            .apply(LogiqIO.Write(endpoint = "endpoint_here", ingestToken = "ingest_token_here"))
 
         pipeline.run().waitUntilFinish()
     }
