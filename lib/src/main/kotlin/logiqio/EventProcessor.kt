@@ -18,7 +18,6 @@ class ProcessBatchedEvent(private val endpoint: String, private val ingestToken:
             .build()
 
         val response = client.send(request, HttpResponse.BodyHandlers.ofString())
-        println(response.body())
         receiver.output(LogiqError(response.statusCode(), response.body()))
     }
 }

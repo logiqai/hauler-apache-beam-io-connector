@@ -5,24 +5,24 @@ import java.io.Serializable
 
 data class LogiqEvent(
     @SerializedName("namespace")
-    val namespace: String?,
+    val namespace: String? = "",
 
     @SerializedName("message")
-    val message: String?,
+    val message: String? = "",
 
     @SerializedName("@timestamp")
-    val timestamp: Int?,
+    val timestamp: Int? = 0,
 
     @SerializedName("host")
-    val host: String?,
+    val host: String? = "",
 
     @SerializedName("proc_id")
-    val pid: String?,
+    val pid: String? = "",
 
     @SerializedName("app_name")
-    val appName: String?,
+    val appName: String? = "",
 
     @SerializedName("cluster_id")
-    val clusterId: String?,
+    val clusterId: String? = "",
 ) : Serializable
 
