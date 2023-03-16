@@ -12,11 +12,24 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+    `maven-publish`
 }
 
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "ai.logiq"
+            artifactId = "logiq-io"
+            version = "1.0.0"
+
+            from(components["java"])
+        }
+    }
 }
 
 val beamVersion = "2.42.0"
@@ -26,7 +39,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
 
     // Use the JUnit 5 integration.
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
 
     //
     // This dependency is exported to consumers, that is to say found on their compile classpath.
@@ -35,8 +48,8 @@ dependencies {
     // App dependencies.
     implementation("org.apache.beam:beam-sdks-java-core:${beamVersion}")
     implementation("org.apache.beam:beam-runners-direct-java:${beamVersion}")
-    implementation("org.slf4j:slf4j-jdk14:1.7.36")
-    implementation("com.google.code.gson:gson:2.8.5")
+    implementation("org.slf4j:slf4j-jdk14:2.0.5")
+    implementation("com.google.code.gson:gson:2.10.1")
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation("com.google.guava:guava:31.1-jre")
