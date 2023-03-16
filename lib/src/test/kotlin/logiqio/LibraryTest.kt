@@ -15,7 +15,7 @@ class LibraryTest {
 
         pipeline
             .apply("Create elements", Create.of(ele))
-            .apply(LogiqIO.Write(endpoint = "endpoint_here", ingestToken = "ingest_token_here"))
+            .apply(LogiqIO.Write(endpoint = "http://localhost:9999/v1/json_batch", ingestToken = "ingest_token_here"))
 
         pipeline.run().waitUntilFinish()
     }
