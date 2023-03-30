@@ -43,3 +43,6 @@
         }
     }
    ```
+  
+   ## Exporting Apache Beam Metrics to a PushGateway
+   In order to export metrics to a Prometheus PushGateway, you can refer to this [test](https://github.com/logiqai/logiq-io/blob/294c774740c966df70a2cc18f07b6b6c830b68c6/lib/src/test/kotlin/logiqio/LibraryTest.kt#L34)
